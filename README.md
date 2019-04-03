@@ -1,5 +1,6 @@
 # vue-demo-pro
 
+yarn add css-loader
 ## Project setup
 ```
 yarn install
