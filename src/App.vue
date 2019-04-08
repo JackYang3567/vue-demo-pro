@@ -13,6 +13,7 @@
     </main>
     <FooterFloatBar />
     <Footer />
+    <BackToTop bgColor="#f90808" svgFillColor="#2c3e50"/>
   </div>
 </template>
 
@@ -23,7 +24,8 @@ import Footer from '@/layouts/Footerbar.vue'
 import FooterFloatBar from '@/layouts/FooterFloatBar.vue'
 import Modal from '@/layouts/Modal.vue'
 import Sidebar from '@/layouts/Sidebar.vue'
-
+//import BackToTop from 'vue-totop'
+import BackToTop from '@/layouts/BackToTop.vue'
 
 export default {
   name: 'home',
@@ -32,7 +34,8 @@ export default {
     Footer,
     FooterFloatBar,
     Modal,
-    Sidebar
+    Sidebar,
+    BackToTop
   }
 }
 </script>
@@ -46,5 +49,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   */
-}
+
+  }
 </style>

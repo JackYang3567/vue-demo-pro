@@ -1,14 +1,9 @@
 <template>
-  <div >
-   
+  <div>
     <div class="preloader">
         <div class="spinner"></div>
     </div>
-   
-
-
     <div class="features segments">
-      
         <div class="container">
             <h1>{{ msg }}</h1>
             <div class="row">
@@ -41,8 +36,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="best-properties segments bg-second">
         <div class="container">
             <div class="section-title">
@@ -114,8 +107,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="latest-news segments">
         <div class="container">
             <div class="section-title">
@@ -143,9 +134,6 @@
             </div>
         </div>
     </div>
-
-
-    
   </div>
 </template>
 

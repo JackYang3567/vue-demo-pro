@@ -15,7 +15,6 @@
         </div>
     </div>
 
-
     <div class="features features-about segments">
         <div class="container">
             <div class="row">

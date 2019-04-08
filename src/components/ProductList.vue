@@ -1,5 +1,4 @@
 <template>
-   <div>
      <div class="row" >
         <div class="col s6" :style="marginBottom" v-for="product in products"
           :key="product.id">
@@ -17,7 +16,6 @@
             </div>
         </div>
     </div>
-   </div>
 </template>
 
 <script>
