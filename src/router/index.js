@@ -5,29 +5,34 @@ import Home from '../views/Home.vue'
 import C from '../views/C.vue'
 import Agent from '../views/Agent.vue'
 import Details from '../views/Details.vue'
-
+import User from '../views/User.vue'
 
 Vue.use(Router)
 
- const router = new Router({
-  mode: 'history',  // 默认 hash 模式的URL中有#号
+const router = new Router({
+  mode: 'history', // 默认 hash 模式的URL中有#号
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
-      name: 'home', //命名路由
+      name: 'home', // 命名路由
       component: Home
     },
-    { 
+    {
       path: '/a',
       redirect: '/b'
-      //重定向:   从 /a 重定向到 /b
-    }, 
+      // 重定向:   从 /a 重定向到 /b
+    },
     {
       path: '/c',
       component: C,
-      //别名:  /c 的别名是 /d，意味着，当用户访问 /d 时，URL 会保持为 /d，但是路由匹配则为 /c，就像用户访问 /c 一样。
+      // 别名:  /c 的别名是 /d，意味着，当用户访问 /d 时，URL 会保持为 /d，但是路由匹配则为 /c，就像用户访问 /c 一样。
       alias: '/d'
+    },
+    {
+      // 动态路径参数 以冒号开头
+      path: '/user/:id',
+      component: User
     },
     {
       path: '/about',
@@ -43,10 +48,10 @@ Vue.use(Router)
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/Agent.vue'),      
+      component: () => import(/* webpackChunkName: "about" */ '../views/Agent.vue'),
       children: [
         {
-          //嵌套路由
+          // 嵌套路由
           // 当 /agent/agent 匹配成功，
           // Agent 会被渲染在 agent 的 <router-view> 中
           path: 'agent',
@@ -59,16 +64,22 @@ Vue.use(Router)
           component: Details
         }
       ]
-    }
-    ,
+    },
     {
-
-        // 会匹配所有路径
-        path: "*",
-        name: "not-found",
-        component: () => import(/* webpackChunkName: "404" */ "../views/NotFound.vue")
+      path: '/products',
+      name: 'products',
+      // route level code-splitting
+      // this generates a separate chunk (products.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue')
+    },
+    {
+      // 会匹配所有路径
+      path: '*',
+      name: 'not-found',
+      component: () => import(/* webpackChunkName: "404" */ '../views/NotFound.vue')
     }
   ]
 })
 
-export default router;
+export default router

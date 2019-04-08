@@ -67,6 +67,7 @@
                         <li> <router-link to="/page-not-found">Page Not Found </router-link></li>
                         <li> <router-link to="/faq">Faq </router-link></li>
                         <li> <router-link to="/testimonial">Testimonial </router-link></li>
+                        <li> <router-link to="/products">Products List </router-link></li>
                     </ul>
                 </div>
             </li>

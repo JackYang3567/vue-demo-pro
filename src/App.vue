@@ -11,6 +11,7 @@
     <main >
        <router-view/>
     </main>
+    <FooterFloatBar />
     <Footer />
   </div>
 </template>
@@ -19,14 +20,17 @@
 // @ is an alias to /src
 import Header from '@/layouts/Headerbar.vue'
 import Footer from '@/layouts/Footerbar.vue'
+import FooterFloatBar from '@/layouts/FooterFloatBar.vue'
 import Modal from '@/layouts/Modal.vue'
 import Sidebar from '@/layouts/Sidebar.vue'
+
 
 export default {
   name: 'home',
   components: {
     Header,
     Footer,
+    FooterFloatBar,
     Modal,
     Sidebar
   }
