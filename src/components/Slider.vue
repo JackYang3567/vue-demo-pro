@@ -3,31 +3,14 @@
    <div class="container">
         <div class="slide">
             <div class="slider-slide owl-carousel owl-theme">
-                <div class="content">
+                <div class="content" v-for="slider in sliders"
+                :key="slider.id">
                     <div class="mask"></div>
-                    <img src="images/slider1.jpg" alt="">
+                    <img :src="slider.pic" alt="">
                     <div class="slider-caption">
-                        <span>WELCOME TO UVEN</span>
-                        <h2>NATURAL PLACE</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elite. Neque, iusto.</p>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="mask2"></div>
-                    <img src="images/slider2.jpg" alt="">
-                    <div class="slider-caption">
-                        <span>WELCOME TO UVEN</span>
-                        <h2>SECURE PLACE</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elite. Neque, iusto.</p>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="mask"></div>
-                    <img src="images/slider3.jpg" alt="">
-                    <div class="slider-caption">
-                        <span>WELCOME TO UVEN</span>
-                        <h2>COMFORTABLE</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elite. Neque, iusto.</p>
+                        <span>{{slider.caption.span_text}}</span>
+                        <h2>{{slider.caption.h2_text}}</h2>
+                        <p>{{slider.caption.p_text}}</p>
                     </div>
                 </div>
             </div>
@@ -36,10 +19,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'Footerbar',
-  props: {
-    msg: String
+  computed: mapState({
+    sliders: state => state.sliders.sliders
+  }),
+  created () {
+    this.$store.dispatch('sliders/getAllSliders')
   }
 }
 </script>
