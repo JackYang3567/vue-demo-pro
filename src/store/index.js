@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import cart from './modules/cart'
 import products from './modules/products'
 import sliders from './modules/slider'
+import users from './modules/users'
 import createLogger from '../plugins/logger'
 
 Vue.use(Vuex)
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   modules: {
     cart,
     products,
-    sliders
+    sliders,
+    users
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []
