@@ -11,7 +11,7 @@
                 </div>
                 <div class="col s2">
                     <div class="content-center">
-                        <router-link to="/"><i class="fas fa-home"></i></router-link>
+                        <a href="/"><i class="fas fa-home"></i></a>
                     </div>
                 </div>
                 <div class="col s2">

@@ -1,7 +1,7 @@
 //import auth from '../../api/auth'
 // initial state
 const state = {
-  isLogin: 0,
+  isLogin: false,
   MyProfile: {}
 }
 
@@ -14,15 +14,24 @@ const actions = {
       //auth.getLoginedUser(user => {
         commit('changeLogin', {id:1})
      // })
-    }
+  },
+  logoutAction ({ commit }) {
+      commit('changeLogout', null)
+}
 }
 
 // mutations
 const mutations = {
   changeLogin (state, user) {
     if(user.id){
-        state.isLogin = 1
+        state.isLogin = true
         state.MyProfile = user
+    }
+  },
+  changeLogout (state, user) {
+    if(!user){
+        state.isLogin = false
+        state.MyProfile = null
     }
   }
 }

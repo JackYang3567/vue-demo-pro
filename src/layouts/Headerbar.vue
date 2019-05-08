@@ -10,23 +10,24 @@
                 </div>
                 <div class="col s6">
                     <div class="content-center">
-                        <router-link to="/"><h1>UVEN{{isLogin}}</h1></router-link>
+                        <a href="/"><h1>My Demo{{ isLogin }}</h1></a>
                     </div>
                 </div>
                 <div class="col s3">
                     <div class="content-right" v-if="isLogin">
                         <!-- <a href="#modal">-->
-                       <a href="#modal" class="modal-trigger">
+                        <a href="#modal" class="modal-trigger">
                             <i class="fas fa-user"></i>
                         </a> 
-                        <a href="/signout" title="Sign Out">
+                        &nbsp;  &nbsp;
+                        <a href="#" @click="signout" title="Sign Out">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </div>
                      <div class="content-right" v-else>
-                        <a href="/signin" title="Sign In">
+                         <router-link to="/signin" title="Sign In">
                             <i class="fas fa-sign-in-alt"></i>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -40,12 +41,24 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Headerbar',
+ data () {
+    return {
+      isLogin: this.$store.state.isLogin 
+    }
+  },
   computed:  mapState({
-    isLogin: state => state.auth.isLogin
+    //isLogin: state => state.auth.isLogin
   }),
   created () {
    // this.$store.dispatch('auth/loginAction')
-  }
+  //  isLogin = this.$store.state.isLogin 
+  },
+  methods: {
+      signout: function () { 
+      this.$store.dispatch('auth/logoutAction')
+      window.location.href='/'
+    }
+  },
 }
 
 </script>
