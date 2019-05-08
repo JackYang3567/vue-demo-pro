@@ -82,6 +82,30 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "users" */ '../views/User.vue')
     },
     {
+      path: '/signup',
+      name: 'signup',
+      // route level code-splitting
+      // this generates a separate chunk (users.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "users" */ '../views/SignUp.vue')
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      // route level code-splitting
+      // this generates a separate chunk (users.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "users" */ '../views/SignIn.vue')
+    },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      // route level code-splitting
+      // this generates a separate chunk (users.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "users" */ '../views/ForgotPassword.vue')
+    },
+    {
       // 会匹配所有路径
       path: '*',
       name: 'not-found',

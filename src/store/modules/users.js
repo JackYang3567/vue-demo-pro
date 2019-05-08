@@ -15,14 +15,14 @@ const actions = {
       commit('setUsers', users)
     })
   /* 这种方式也是成功的
-   fetch("http://192.168.33.10:7001/api/user")
+   fetch("http://192.168.33.10:7001/api/v2/user")
    .then(res => res.json()).then((res) => {
-       console.log("===>",res.data.users)
-       commit('setUsers', res.data.users)
+       console.log("===>",res.data.rows)
+       commit('setUsers', res.data.rows)
    }).then(function(err) {
        console.log(err)
    })
-   */  
+   */
   }
 }
 
