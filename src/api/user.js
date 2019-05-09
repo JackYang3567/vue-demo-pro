@@ -6,26 +6,27 @@
 
 const axios = require('axios');
 const config = require('../../config.json')
-const API = `${config.AIP_PREFIX}/user`
+const API_LIST = `${config.AIP_PREFIX}/user`
 
-console.log("API==",API)
- let resUsers = []   
-  /* // fetch是成功的   res里就是数据
-   fetch(`${API}`)
-      .then(res => res.json()).then((res) => {
-        resUsers = res.data.rows
-        //  commit('setUsers', res.data.rows)
-      }).then(function(err) {
-          console.log(err)
-  })
- */
+export default {
+   
+    getUsers (cb) {
 
- // axios是response.data里才是数据
-    axios.get(`${API}`)
+      /* // fetch是成功的   res里就是数据
+        fetch(`${API}`)
+            .then(res => res.json()).then((res) => {
+              //  commit('setUsers', res.data.rows)
+              setTimeout(() => cb(res.data.rows), 10)
+            }).then(function(err) {
+                console.log(err)
+        })
+      */
+      // axios是response.data里才是数据
+      axios.get(`${API_LIST}`)
       .then(function (res) {
         // handle success
         console.log("res.data====>",res.data)
-        resUsers = res.data.data.rows;
+        setTimeout(() => cb(res.data.data.rows), 10)
       })
       .catch(function (error) {
         // handle error
@@ -33,13 +34,9 @@ console.log("API==",API)
       })
       .then(function () {
         // always executed
-      });
-
-  export default {
-    getUsers (cb) {
-      setTimeout(() => cb(resUsers), 10)
+      });     
     }
-  }
+}
   
 
  

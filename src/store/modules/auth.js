@@ -10,9 +10,10 @@ const getters = {}
 
 // actions
 const actions = {
-  loginAction ({ commit }) {
-      //auth.getLoginedUser(user => {
-        commit('changeLogin', {id:1})
+  loginAction ({ commit },user) {
+     // auth.getLoginedUser(user => {
+        commit('changeLogin', user)
+     
      // })
   },
   logoutAction ({ commit }) {
@@ -23,7 +24,9 @@ const actions = {
 // mutations
 const mutations = {
   changeLogin (state, user) {
-    if(user.id){
+    console.log('to here===changeLogin===')
+    if(user){
+      console.log('to here===changeLogin=1111111==')
         state.isLogin = true
         state.MyProfile = user
     }
