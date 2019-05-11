@@ -10,7 +10,9 @@
     <Sidebar />
     <Modal />
     <main >
-       <router-view/>
+       <transition :name="transitionName">
+         <router-view class="child-view" />
+       </transition >
     </main>
     <FooterFloatBar />
     
@@ -34,6 +36,17 @@ import BackToTop from '@/layouts/BackToTop.vue'
 
 export default {
   name: 'home',
+  data () {
+    return {
+      transitionName: 'slide-left'
+    }
+  },
+  beforeRouteUpdate (to, from, next) {
+    const toDepth = to.path.split('/').length
+    const fromDepth = from.path.split('/').length
+    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    next()
+  },
   components: {
     Header,
     Footer,

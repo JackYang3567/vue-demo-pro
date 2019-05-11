@@ -15,7 +15,8 @@ export default {
   name: 'home',
   data () {
     return {
-      show: true
+      show: true,
+      
     }
   },
   computed: {

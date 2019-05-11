@@ -10,11 +10,11 @@
                 </div>
                 <div class="col s6">
                     <div class="content-center">
-                        <a href="/"><h1>My Demo{{ isLogin }}</h1></a>
+                        <a href="/"><h1>My Demo</h1></a>
                     </div>
                 </div>
                 <div class="col s3">
-                    <div class="content-right" v-if="isLogin">
+                    <div class="content-right" v-if="loginName">
                         <!-- <a href="#modal">-->
                         <a href="#modal" class="modal-trigger">
                             <i class="fas fa-user"></i>
@@ -37,26 +37,31 @@
 
 <script>
 // @ is an alias to /src
-import { mapState } from 'vuex'
-
+import { mapState, mapMutations } from 'vuex'
+let self = this;
 export default {
   name: 'Headerbar',
  data () {
     return {
-      isLogin: this.$store.state.isLogin 
+      loginName: this.$store.state.auth.loginName 
     }
   },
   computed:  mapState({
-    //isLogin: state => state.auth.isLogin
+   // loginName: state => state.auth.loginName
+   
   }),
   created () {
+    self = this;   
    // this.$store.dispatch('auth/loginAction')
-  //  isLogin = this.$store.state.isLogin 
+    this.loginName = this.$store.state.auth.loginName 
+     console.log(' this.$store.state==',this.$store.state.auth)
   },
   methods: {
+      ...mapMutations('auth',[ 'LogOut' ]),
       signout: function () { 
-      this.$store.dispatch('auth/logoutAction')
-      window.location.href='/'
+        self.LogOut()
+        window.location.href = '/'
+       // self.$router.push({name:'home'})
     }
   },
 }

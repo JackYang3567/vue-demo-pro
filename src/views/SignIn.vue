@@ -42,12 +42,12 @@
 </template>
 <script>
 
-import { mapState,mapActions } from 'vuex'
+import { mapState,mapActions,mapMutations } from 'vuex'
 import {AIP_PREFIX,SIGNIN_CAPTCHA} from '../../config.json'
 import axios from 'axios';
 
 const API = `${AIP_PREFIX}/user/signin`
-
+let self = this;
 export default {
  data () {
     return {      
@@ -61,11 +61,11 @@ export default {
   }),
   created () {
     //this.$store.dispatch('users/getAllUsers')
+    self = this;
   },
   methods: {
-      ...mapActions([
-        'loginAction'
-      ]),
+     ...mapActions('auth',[ 'loginAction' ]),
+    ...mapMutations('auth',[ 'Login' ]),
       signin: function () { 
           let formData = JSON.stringify(this.signinFormData);
           console.log("signinFormData===",this.signinFormData)
@@ -75,9 +75,11 @@ export default {
           axios.post(`${API}`,this.signinFormData)
           .then(function (res) {
             // handle success
-            console.log("API ===res.data====>",res.data)
-          // resUsers = res.data.data.rows;
-            this.loginAction(res.data.data)
+            console.log("API ===res.data.data====>",res.data.data)
+            // resUsers = res.data.data.rows;
+            //self.$store.dispatch('auth/loginAction')
+           // self.loginAction(res.data.data)
+            self.Login(res.data.data)
           })
           .catch(function (error) {
             // handle error
@@ -86,12 +88,13 @@ export default {
           .then(function () {
             // always executed
           });
-        //window.location.href = '/'
-        //this.$router.push({name:'home'})
+        window.location.href = '/'
+       // this.$router.push({name:'home'})
     },
     getCaptcha: function () { 
       this.signin_captcha =  `${SIGNIN_CAPTCHA}?t=${Math.random()}`
     },
+    
   },
 }
 </script>

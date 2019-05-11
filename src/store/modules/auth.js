@@ -1,42 +1,32 @@
-//import auth from '../../api/auth'
-// initial state
+
+import Cookie from 'vue-cookies'
 const state = {
-  isLogin: false,
-  MyProfile: {}
+  loginName: Cookie.get('loginName'),
+  token: Cookie.get('token')
 }
 
 // getters
 const getters = {}
 
 // actions
-const actions = {
-  loginAction ({ commit },user) {
-     // auth.getLoginedUser(user => {
-        commit('changeLogin', user)
-     
-     // })
-  },
-  logoutAction ({ commit }) {
-      commit('changeLogout', null)
-}
-}
+const actions = {}
 
 // mutations
 const mutations = {
-  changeLogin (state, user) {
-    console.log('to here===changeLogin===')
-    if(user){
-      console.log('to here===changeLogin=1111111==')
-        state.isLogin = true
-        state.MyProfile = user
-    }
+  Login (state, user){
+    state.loginName = user.email
+    state.token = user.token
+    //往cookie中写数据
+    Cookie.set('loginName',user.email)
+    Cookie.set('token',user.token)
   },
-  changeLogout (state, user) {
-    if(!user){
-        state.isLogin = false
-        state.MyProfile = null
-    }
-  }
+  LogOut (state){
+    state.loginName = ""
+    state.token = ""
+    //往cookie中写数据
+    Cookie.set('loginName',"")
+    Cookie.set('token',"")
+  },
 }
 
 export default {
